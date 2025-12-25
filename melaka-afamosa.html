@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Melaka (A’Famosa) — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability.html">Check Availability</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="./availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Melaka Villas (A’Famosa)</h1>
+    <p class="muted">3 villas at A’Famosa: 909, 802, 143 — great for family & group trips.</p>
+  </section>
+
+  <section class="section grid grid-3">
+    <div class="card">
+      <div class="thumb"><img src="./assets/img/placeholders/villa-1.jpg" alt=""></div>
+      <div class="pcard-title">Charming Villa A’Famosa — Villa 909</div>
+      <div class="pcard-meta">Villa • A’Famosa</div>
+      <div class="pcard-actions">
+        <a class="btn" href="./property/villa-909.html">Details</a>
+        <a class="btn btn-primary" href="./availability.html?unit=Villa%20909">Check Availability</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="./assets/img/placeholders/villa-2.jpg" alt=""></div>
+      <div class="pcard-title">Charming Villa A’Famosa — Villa 802</div>
+      <div class="pcard-meta">Villa • A’Famosa</div>
+      <div class="pcard-actions">
+        <a class="btn" href="./property/villa-802.html">Details</a>
+        <a class="btn btn-primary" href="./availability.html?unit=Villa%20802">Check Availability</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="thumb"><img src="./assets/img/placeholders/villa-3.jpg" alt=""></div>
+      <div class="pcard-title">Charming Villa A’Famosa — Villa 143</div>
+      <div class="pcard-meta">Villa • A’Famosa</div>
+      <div class="pcard-actions">
+        <a class="btn" href="./property/villa-143.html">Details</a>
+        <a class="btn btn-primary" href="./availability.html?unit=Villa%20143">Check Availability</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="./availability.html">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to check availability for Melaka villas (A'Famosa).");
+  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  document.getElementById("waTop").href = wa;
+  document.getElementById("waMobile").href = wa;
+  if(document.getElementById("waFloat")) document.getElementById("waFloat").href = wa;
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+</body>
+</html>

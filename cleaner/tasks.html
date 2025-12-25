@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>My Cleaning Tasks — Charming Villa</title>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./tasks.html">Cleaner • Charming Villa</a>
+    <nav class="navlinks">
+      <a href="./tasks.html">My Tasks</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" id="btnLogout" href="#">Logout</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">My Cleaning Tasks</h1>
+    <p class="muted">Checkout 12PM → clean 12PM–3PM → next check-in 3PM.</p>
+  </section>
+
+  <section class="section card">
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <div class="muted small">Show</div>
+      <select id="days" class="input">
+        <option value="3">Next 3 days</option>
+        <option value="7" selected>Next 7 days</option>
+        <option value="14">Next 14 days</option>
+        <option value="30">Next 30 days</option>
+      </select>
+      <button class="btn btn-primary" id="btnRefresh" type="button">Refresh</button>
+      <div class="muted small" id="me"></div>
+    </div>
+
+    <div id="tasks" style="margin-top:12px;"></div>
+  </section>
+
+  <div class="footer container">Cleaner • © <span id="year"></span> Charming Villa</div>
+</main>
+
+<script src="../assets/js/cleaner-common.js"></script>
+<script src="../assets/js/cleaner-tasks.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

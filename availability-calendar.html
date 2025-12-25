@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Availability Calendar — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability-calendar.html">Availability Calendar</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="./check-availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Availability Calendar</h1>
+    <p class="muted">Visual calendar per unit. “Booked” dates come from <b>assets/js/data/bookings.js</b>.</p>
+    <div class="filterbar" style="margin-top:12px;">
+      <select id="unitSelect" class="select"></select>
+      <a class="btn" href="./check-availability.html">Check Availability</a>
+      <a class="btn" href="./admin.html">Admin</a>
+    </div>
+  </section>
+
+  <section class="section calendar-wrap" id="calendar"></section>
+
+  <section class="section card">
+    <h2>Update bookings (for calendar + admin)</h2>
+    <ol class="list">
+      <li>Open <b>assets/js/data/bookings.js</b></li>
+      <li>Add/edit bookings: <b>unit</b>, <b>checkIn</b>, <b>checkOut</b>, optional <b>cleaner</b></li>
+      <li>Refresh this page</li>
+    </ol>
+    <p class="muted small">Checkout date shows as <b>Turnover</b> (cleaning window 12PM–3PM).</p>
+  </section>
+
+<div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="./check-availability.html">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./check-availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+<script src="./assets/js/calendar.js"></script>
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to check availability.");
+  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  document.getElementById("waTop").href = wa;
+  document.getElementById("waMobile").href = wa;
+  document.getElementById("waFloat").href = wa;
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

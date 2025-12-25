@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bookings — Admin</title>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head><body>
+<header><div class="container nav">
+  <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
+  <nav class="navlinks">
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./calendar.html">Calendar</a>
+    <a href="./bookings.html">Bookings</a>
+    <a href="./cleaning.html">Cleaning</a>
+    <a href="./settings.html">Settings</a>
+  </nav>
+  <div class="navcta">
+    <a class="btn" id="btnLogout" href="#">Logout</a>
+  </div>
+</div></header>
+
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Bookings</h1>
+    <p class="muted">Search, filter, edit and cancel bookings.</p>
+  </section>
+
+  <section class="section card">
+    <div class="filterbar" style="gap:10px; flex-wrap:wrap;">
+      <input id="q" class="input" placeholder="Search customer / phone / unit / channel" style="min-width:260px;">
+      <select id="status" class="input">
+        <option value="ALL">All status</option>
+        <option value="INQUIRY">Inquiry</option>
+        <option value="PENDING_DEPOSIT">Pending deposit</option>
+        <option value="CONFIRMED">Confirmed</option>
+        <option value="CHECKED_IN">Checked-in</option>
+        <option value="CHECKED_OUT">Checked-out</option>
+        <option value="CANCELLED">Cancelled</option>
+      </select>
+      <select id="unit_id" class="input">
+        <option value="ALL">All units</option>
+      </select>
+      <button class="btn btn-primary" id="btnRefresh" type="button">Refresh</button>
+      <a class="btn" href="./dashboard.html">Quick add</a>
+    </div>
+
+    <div style="margin-top:12px; overflow:auto;">
+      <table class="table" style="min-width:980px;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Unit</th>
+            <th>Dates</th>
+            <th>Customer</th>
+            <th>Channel</th>
+            <th>Status</th>
+            <th>Deposit</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="muted small" id="hint" style="margin-top:10px;"></div>
+  </section>
+
+  <!-- Edit modal -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-card card" style="max-width:720px; margin:6vh auto; padding:16px;">
+      <div style="display:flex; justify-content:space-between; gap:10px; align-items:center;">
+        <div style="font-weight:900; font-size:18px;">Edit booking</div>
+        <button class="btn" id="btnClose" type="button">Close</button>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;">
+        <input type="hidden" id="id">
+        <div>
+          <div class="muted small">Unit</div>
+          <select id="m_unit_id" class="input" style="width:100%;"></select>
+        </div>
+        <div>
+          <div class="muted small">Status</div>
+          <select id="m_status" class="input" style="width:100%;">
+            <option value="INQUIRY">Inquiry</option>
+            <option value="PENDING_DEPOSIT">Pending deposit</option>
+            <option value="CONFIRMED">Confirmed</option>
+            <option value="CHECKED_IN">Checked-in</option>
+            <option value="CHECKED_OUT">Checked-out</option>
+            <option value="CANCELLED">Cancelled</option>
+          </select>
+        </div>
+        <div>
+          <div class="muted small">Check-in</div>
+          <input id="m_check_in" class="input" type="date" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Check-out</div>
+          <input id="m_check_out" class="input" type="date" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Customer name</div>
+          <input id="m_customer_name" class="input" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Phone</div>
+          <input id="m_customer_phone" class="input" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Channel</div>
+          <input id="m_channel" class="input" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Pax</div>
+          <input id="m_pax" class="input" type="number" min="1" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Total price (RM)</div>
+          <input id="m_total_price" class="input" type="number" step="0.01" style="width:100%;">
+        </div>
+        <div>
+          <div class="muted small">Deposit (RM)</div>
+          <input id="m_deposit_amount" class="input" type="number" step="0.01" style="width:100%;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label class="muted small" style="display:flex; align-items:center; gap:8px;">
+            <input id="m_deposit_paid" type="checkbox"> Deposit paid
+          </label>
+        </div>
+        <div style="grid-column:1/-1;">
+          <div class="muted small">Notes</div>
+          <input id="m_notes" class="input" style="width:100%;">
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:12px; align-items:center; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="btnSave" type="button">Save</button>
+        <button class="btn" id="btnCancelBooking" type="button">Cancel booking</button>
+        <div class="muted small" id="m_msg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer container">Admin • © <span id="year"></span> Charming Villa Melaka</div>
+</main>
+
+<script src="../assets/js/admin-common.js"></script>
+<script src="../assets/js/admin-bookings.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body></html>

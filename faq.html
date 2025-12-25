@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FAQ & Policies — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability.html">Check Availability</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="./availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <section class="section card">
+    <h1 style="margin:0 0 6px;">FAQ & Policies</h1>
+    <p class="muted">Clear rules = smoother stay for everyone. (Edit this page to match your exact policy.)</p>
+    <hr class="sep" />
+
+    <h2>Check-in / Check-out</h2>
+    <ul class="list">
+      <li><b>Check-in:</b> 3:00 PM</li>
+      <li><b>Check-out:</b> 12:00 PM</li>
+      <li>Please inform us if you expect a late arrival.</li>
+    </ul>
+
+    <h2>Booking Confirmation</h2>
+    <ul class="list">
+      <li>Bookings are confirmed via WhatsApp to avoid double booking.</li>
+      <li>We may request a deposit to secure the dates.</li>
+    </ul>
+
+    <h2>House Rules</h2>
+    <ul class="list">
+      <li>No smoking inside the unit.</li>
+      <li>Keep noise low after 10:00 PM.</li>
+      <li>Please take care of the property and furniture.</li>
+    </ul>
+
+    <h2>Damages & Extra Cleaning</h2>
+    <ul class="list">
+      <li>Guests may be charged for damages or excessive cleaning (if applicable).</li>
+    </ul>
+
+    <h2>Cancellation</h2>
+    <ul class="list">
+      <li>State your cancellation policy here (recommended: clear timeline + refund rules).</li>
+    </ul>
+  </section>
+
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="./availability.html">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to ask about booking.");
+  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  document.getElementById("waTop").href = wa;
+  document.getElementById("waMobile").href = wa;
+  if(document.getElementById("waFloat")) document.getElementById("waFloat").href = wa;
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Booking Request — Charming Villa Melaka</title>
+<link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability.html">Check Availability</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="./availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section card">
+    <h1 style="margin:0 0 6px;">Booking Request</h1>
+    <p class="muted">Fill in your details and we’ll open WhatsApp with a complete booking message.</p>
+
+    <div class="form-grid" style="margin-top:12px;">
+      <div><label class="small-note">Unit</label><input id="unit" class="input" type="text" readonly /></div>
+      <div><label class="small-note">Dates</label><input id="dates" class="input" type="text" readonly /></div>
+      <div><label class="small-note">Your name</label><input id="name" class="input" type="text" placeholder="e.g., Sarah" /></div>
+      <div><label class="small-note">Pax</label><input id="pax" class="input" type="number" min="1" placeholder="e.g., 8" /></div>
+      <div style="grid-column:1/-1;"><label class="small-note">Notes (optional)</label><textarea id="notes" class="textarea" placeholder="e.g., late check-in, extra mattress request"></textarea></div>
+    </div>
+
+    <div class="pcard-actions" style="margin-top:12px;">
+      <button class="btn btn-primary" id="btnSend" type="button">Send on WhatsApp</button>
+      <a class="btn" href="./availability.html">Back to availability</a>
+    </div>
+
+    <div class="muted small" style="margin-top:10px;">Check-in: <b>3:00 PM</b> • Check-out: <b>12:00 PM</b></div>
+  </section>
+
+  <div class="footer container">© <span id="year"></span> Charming Villa Melaka</div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn" href="./availability.html">Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+<script src="./assets/js/cv-storage.js"></script>
+<script src="./assets/js/book.js"></script>
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to book.");
+  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  document.getElementById("waTop").href = wa;
+  document.getElementById("waMobile").href = wa;
+  document.getElementById("waFloat").href = wa;
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body></html>

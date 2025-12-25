@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Cleaner Login — Charming Villa</title>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="../index.html">Charming Villa</a>
+    <nav class="navlinks">
+      <a href="../index.html">Public site</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section card" style="max-width:520px; margin:24px auto;">
+    <h1 style="margin:0 0 6px;">Cleaner Login</h1>
+    <p class="muted small">Access your assigned cleaning tasks.</p>
+
+    <div class="muted small" id="err" style="display:none; margin:10px 0; color:#ffb4b4;">
+      Invalid username or password.
+    </div>
+
+    <label class="muted small" for="username">Username</label>
+    <input id="username" class="input" placeholder="e.g. qaqa" autocomplete="username" style="margin-top:6px; width:100%;" />
+
+    <label class="muted small" for="password" style="margin-top:12px; display:block;">Password</label>
+    <input id="password" class="input" type="password" placeholder="••••••••" autocomplete="current-password" style="margin-top:6px; width:100%;" />
+
+    <div style="display:flex; gap:10px; margin-top:14px;">
+      <button class="btn btn-primary" id="btnLogin" type="button">Login</button>
+      <a class="btn" href="../index.html">Back</a>
+    </div>
+  </section>
+
+  <div class="footer container">© <span id="year"></span> Charming Villa</div>
+</main>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+async function doLogin(){
+  const u = document.getElementById("username").value.trim();
+  const p = document.getElementById("password").value;
+
+  const res = await fetch("../api/auth_login.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ username: u, password: p })
+  }).then(r=>r.json()).catch(()=>({ok:false}));
+
+  if(!res.ok){
+    document.getElementById("err").style.display="block";
+    return;
+  }
+
+  // After login, send cleaner to their tasks page
+  location.href="./tasks.html";
+}
+
+document.getElementById("btnLogin").addEventListener("click", doLogin);
+document.getElementById("password").addEventListener("keydown", (e)=>{
+  if(e.key==="Enter") doLogin();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Check Availability — Charming Villa Melaka</title>
+<link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability.html">Check Availability</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn btn-primary" href="./availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section hero card">
+    <h1 style="margin:0 0 6px;">Check Availability</h1>
+    <p class="muted">Select your dates and we’ll show which units are available.</p>
+
+    <div class="form-grid" style="margin-top:12px;">
+      <div>
+        <label class="small-note">Location</label>
+        <select id="loc" class="select">
+          <option value="ALL">All locations</option>
+          <option value="Shah Alam">Shah Alam</option>
+          <option value="Melaka (A'Famosa)">Melaka (A'Famosa)</option>
+        </select>
+      </div>
+      <div>
+        <label class="small-note">Unit</label>
+        <select id="unit" class="select">
+          <option value="ANY">Any unit</option>
+        </select>
+      </div>
+      <div>
+        <label class="small-note">Check-in (3:00 PM)</label>
+        <input id="checkIn" class="input" type="date" />
+      </div>
+      <div>
+        <label class="small-note">Check-out (12:00 PM)</label>
+        <input id="checkOut" class="input" type="date" />
+      </div>
+    </div>
+
+    <div class="pcard-actions" style="margin-top:12px;">
+      <button class="btn btn-primary" id="btnCheck" type="button">Check</button>
+      <a class="btn" href="./properties.html">Browse properties</a>
+    </div>
+
+    <div id="msg" class="muted small" style="margin-top:10px;"></div>
+  </section>
+
+  <section class="section">
+    <h2>Available</h2>
+    <div class="grid" id="availableGrid"></div>
+  </section>
+
+  <section class="section">
+    <h2>Not available</h2>
+    <div class="grid" id="unavailableGrid"></div>
+  </section>
+
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="./availability.html">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+<script src="./assets/js/availability.js"></script>
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to ask about availability.");
+  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  document.getElementById("waTop").href = wa;
+  document.getElementById("waMobile").href = wa;
+  document.getElementById("waFloat").href = wa;
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body></html>

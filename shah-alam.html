@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shah Alam — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability.html">Check Availability</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="./availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Shah Alam Homestay (Denai Alam)</h1>
+    <p class="muted">5 units in Denai Alam: 2 at Tulips Apartment and 3 at Habitus Denai Alam.</p>
+  </section>
+
+  <section class="section">
+    <h2>Tulips Apartment (2 units)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="thumb"><img src="./assets/img/placeholders/room-1.jpg" alt=""></div>
+        <div class="pcard-title">Tulips Denai Alam — Unit T1</div>
+        <div class="pcard-meta">Apartment • Tulips</div>
+        <div class="pcard-actions">
+          <a class="btn" href="./property/tulips-t1.html">Details</a>
+          <a class="btn btn-primary" href="./availability.html?unit=Tulips%20T1">Check Availability</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb"><img src="./assets/img/placeholders/room-3.jpg" alt=""></div>
+        <div class="pcard-title">Tulips Denai Alam — Unit T2</div>
+        <div class="pcard-meta">Apartment • Tulips</div>
+        <div class="pcard-actions">
+          <a class="btn" href="./property/tulips-t2.html">Details</a>
+          <a class="btn btn-primary" href="./availability.html?unit=Tulips%20T2">Check Availability</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Habitus Denai Alam (3 units)</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="thumb"><img src="./assets/img/placeholders/room-2.jpg" alt=""></div>
+        <div class="pcard-title">Habitus Denai Alam — Unit H1</div>
+        <div class="pcard-meta">Apartment • Habitus</div>
+        <div class="pcard-actions">
+          <a class="btn" href="./property/habitus-h1.html">Details</a>
+          <a class="btn btn-primary" href="./availability.html?unit=Habitus%20H1">Check Availability</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb"><img src="./assets/img/placeholders/room-1.jpg" alt=""></div>
+        <div class="pcard-title">Habitus Denai Alam — Unit H2</div>
+        <div class="pcard-meta">Apartment • Habitus</div>
+        <div class="pcard-actions">
+          <a class="btn" href="./property/habitus-h2.html">Details</a>
+          <a class="btn btn-primary" href="./availability.html?unit=Habitus%20H2">Check Availability</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="thumb"><img src="./assets/img/placeholders/room-3.jpg" alt=""></div>
+        <div class="pcard-title">Habitus Denai Alam — Unit H3</div>
+        <div class="pcard-meta">Apartment • Habitus</div>
+        <div class="pcard-actions">
+          <a class="btn" href="./property/habitus-h3.html">Details</a>
+          <a class="btn btn-primary" href="./availability.html?unit=Habitus%20H3">Check Availability</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="./availability.html">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to check availability for Shah Alam units.");
+  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
+  document.getElementById("waTop").href = wa;
+  document.getElementById("waMobile").href = wa;
+  if(document.getElementById("waFloat")) document.getElementById("waFloat").href = wa;
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+</body>
+</html>

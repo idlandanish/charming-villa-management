@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin Checklist — Charming Villa Melaka</title><link rel="stylesheet" href="../assets/css/style.css"/></head><body>
+<script src="../assets/js/cv-storage.js"></script>
+<script>
+  if(!cv_adminRequire()){
+    location.href = "./login.html";
+  }
+</script><header>
+  <div class="container nav">
+    <a class="brand" href="../index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./dashboard.html">Dashboard</a>
+      <a href="./calendar.html">Calendar</a>
+      <a href="./bookings.html">Bookings</a>
+      <a href="./cleaning.html">Cleaning</a>
+      <a href="./checklist.html">Checklist</a>
+      <a href="./settings.html">Settings</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" id="btnLogout" href="#">Logout</a>
+    </div>
+  </div>
+</header>
+<main class="container"><section class="section card">
+<h1 style="margin:0 0 6px;">Checklist</h1>
+<p class="muted">This page is included in v3 scaffolding. If you want full CRUD + calendar features, tell me and I’ll generate the complete admin JS bundle.</p>
+<a class="btn btn-primary" href="./dashboard.html">Back to dashboard</a>
+</section><div class="footer container">Admin • © <span id="year"></span> Charming Villa Melaka</div></main>
+<script src="../assets/js/admin-common.js"></script>
+</body></html>

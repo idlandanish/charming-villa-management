@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Check Availability — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="./index.html">Home</a>
+      <a href="./properties.html">Properties</a>
+      <a href="./availability.html">Check Availability</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="./faq.html">FAQ & Policies</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="./availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section card">
+    <h1 style="margin:0 0 6px;">Check Availability</h1>
+    <p class="muted" id="pickedUnit">Fill the details below. We will confirm via WhatsApp to avoid double booking.</p>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><b>Fill dates & unit</b><div class="muted small">Choose your preferred stay.</div></div>
+      <div class="step"><span class="num">2</span><b>Send to WhatsApp</b><div class="muted small">We confirm availability quickly.</div></div>
+      <div class="step"><span class="num">3</span><b>Confirm booking</b><div class="muted small">Deposit/payment (if required).</div></div>
+    </div>
+    <div class="pcard-actions" style="margin-top:12px;">
+      <a class="btn" href="./availability-calendar.html">View Availability Calendar</a>
+      <a class="btn" href="./admin.html">Admin Dashboard</a>
+    </div>
+    <hr class="sep" />
+
+    <form id="form" class="grid" style="gap:10px; max-width:720px;">
+      <input class="search" name="name" placeholder="Full name" required />
+      <input class="search" name="phone" placeholder="Phone number" required />
+      <input class="search" name="unit" id="unit" placeholder="Unit (e.g., Villa 909 / Tulips T1)" required />
+      <div class="grid grid-2">
+        <input class="search" type="date" name="checkin" required />
+        <input class="search" type="date" name="checkout" required />
+      </div>
+      <input class="search" name="pax" placeholder="Number of guests (pax)" required />
+      <input class="search" name="notes" placeholder="Notes (optional)" />
+
+      <button class="btn btn-primary" type="submit">Send to WhatsApp</button>
+      <p class="muted small">By submitting, you’ll be redirected to WhatsApp with a prefilled message.</p>
+      <p class="muted small">Optional: Replace this form later with a Google Form embed for automatic data collection.</p>
+    </form>
+  </section>
+
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="./availability.html">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<script src="./assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const params = new URLSearchParams(location.search);
+  const unitParam = params.get("unit");
+  if(unitParam){
+    document.getElementById("unit").value = unitParam;
+    document.getElementById("pickedUnit").textContent = `Selected unit: ${unitParam}. Fill details and we will confirm via WhatsApp.`;
+  }
+
+  const msgTop = encodeURIComponent("Hi Charming Villa Melaka, I want to check availability.");
+  const waTop = `https://wa.me/${WA_NUMBER}?text=${msgTop}`;
+  document.getElementById("waTop").href = waTop;
+  document.getElementById("waMobile").href = waTop;
+
+  document.getElementById("form").addEventListener("submit", (e)=>{
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const msg =
+`Hi Charming Villa Melaka, I want to check availability.
+
+Name: ${data.get("name")}
+Phone: ${data.get("phone")}
+Unit: ${data.get("unit")}
+Check-in: ${data.get("checkin")}
+Check-out: ${data.get("checkout")}
+Guests (pax): ${data.get("pax")}
+Notes: ${data.get("notes") || "-"}
+
+Thank you!`;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+</body>
+</html>

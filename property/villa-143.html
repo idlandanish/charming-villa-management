@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Charming Villa A’Famosa — Villa 143 — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="../index.html">Charming Villa Melaka</a>
+    <nav class="navlinks">
+      <a href="../index.html">Home</a>
+      <a href="../properties.html">Properties</a>
+      <a href="../availability-calendar.html">Availability Calendar</a>
+      <a href="../shah-alam.html">Shah Alam</a>
+      <a href="../melaka-afamosa.html">Melaka (A’Famosa)</a>
+      <a href="../faq.html">FAQ & Policies</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" href="../check-availability.html">Check Availability</a>
+      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section detail">
+    <div>
+      <div class="gallery"><img src="../assets/img/placeholders/villa-3.jpg" alt=""></div>
+      <h1 style="margin:12px 0 6px;">Charming Villa A’Famosa — Villa 143</h1>
+      <p class="muted">Villa • Melaka • A’Famosa</p>
+
+      <div class="card section">
+        <h2>Amenities</h2>
+        <ul class="list">
+          <li>Air-conditioning</li>
+          <li>WiFi (if available)</li>
+          <li>Kitchen basics</li>
+          <li>Parking (subject to unit layout/management rules)</li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <h2>House Rules</h2>
+        <ul class="list">
+          <li><b>Check-in:</b> 3:00 PM</li>
+          <li><b>Check-out:</b> 12:00 PM</li>
+          <li>No smoking inside.</li>
+          <li>Keep noise low after 10:00 PM.</li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="muted small">Standard time</div>
+      <div class="kv" style="margin-top:8px;">
+        <div><b>Check-in</b> 3:00 PM</div>
+        <div><b>Check-out</b> 12:00 PM</div>
+      </div>
+
+      <div class="pcard-actions" style="margin-top:12px;">
+        <a class="btn btn-primary" href="../check-availability.html?unit=Villa%20143">Check Availability</a>
+        <a class="btn btn-wa" id="waUnit" href="#" target="_blank" rel="noreferrer">WhatsApp (Prefilled)</a>
+      </div>
+
+      <p class="muted small" style="margin-top:10px;">
+        Note: Booking is confirmed via WhatsApp to avoid double booking.
+      </p>
+    </aside>
+  </section>
+
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
+</main>
+
+<div class="mobilebar">
+  <div class="container wrap">
+    <a class="btn btn-primary" href="../check-availability.html?unit=Villa%20143">Check Availability</a>
+    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  const WA_NUMBER = "60XXXXXXXXXX";
+  const msgTop = encodeURIComponent("Hi Charming Villa Melaka, I want to check availability.");
+  const waTop = `https://wa.me/${WA_NUMBER}?text=${msgTop}`;
+  document.getElementById("waTop").href = waTop;
+
+  const msgUnit = encodeURIComponent(`Hi Charming Villa Melaka, I want to book Charming Villa A’Famosa — Villa 143.
+Check-in date: __/__/____
+Check-out date: __/__/____
+Guests (pax): __
+Thank you!`);
+  const waUnit = `https://wa.me/${WA_NUMBER}?text=${msgUnit}`;
+  document.getElementById("waUnit").href = waUnit;
+  document.getElementById("waMobile").href = waUnit;
+  if(document.getElementById("waFloat")) document.getElementById("waFloat").href = waUnit;
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<div class="floating-actions">
+  <a class="fab btn-primary" href="../check-availability.html" style="color:#fff;">Check Availability</a>
+  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
+</div>
+
+</body>
+</html>

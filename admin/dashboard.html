@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Admin Dashboard — Charming Villa Melaka</title>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head><body>
+<header><div class="container nav">
+  <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
+  <nav class="navlinks">
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./calendar.html">Calendar</a>
+    <a href="./bookings.html">Bookings</a>
+    <a href="./cleaning.html">Cleaning</a>
+    <a href="./settings.html">Settings</a>
+  </nav>
+  <div class="navcta">
+    <a class="btn" id="btnLogout" href="#">Logout</a>
+  </div>
+</div></header>
+
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Dashboard</h1>
+    <p class="muted">Today at a glance + quick add booking.</p>
+  </section>
+
+  <section class="section card">
+    <h2 style="margin:0 0 10px;">Quick add booking</h2>
+    <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px;">
+      <div>
+        <div class="muted small">Unit</div>
+        <select id="unit_id" class="input" style="width:100%;"></select>
+      </div>
+      <div>
+        <div class="muted small">Status</div>
+        <select id="status" class="input" style="width:100%;">
+          <option value="INQUIRY">Inquiry</option>
+          <option value="PENDING_DEPOSIT">Pending deposit</option>
+          <option value="CONFIRMED" selected>Confirmed</option>
+          <option value="CHECKED_IN">Checked-in</option>
+          <option value="CHECKED_OUT">Checked-out</option>
+          <option value="CANCELLED">Cancelled</option>
+        </select>
+      </div>
+      <div>
+        <div class="muted small">Check-in (3PM)</div>
+        <input id="check_in" class="input" type="date" style="width:100%;">
+      </div>
+      <div>
+        <div class="muted small">Check-out (12PM)</div>
+        <input id="check_out" class="input" type="date" style="width:100%;">
+      </div>
+      <div>
+        <div class="muted small">Channel / Agent</div>
+        <input id="channel" class="input" placeholder="Maksu / Airbnb / Agoda / FB" style="width:100%;">
+      </div>
+      <div>
+        <div class="muted small">Customer name</div>
+        <input id="customer_name" class="input" placeholder="Customer name" style="width:100%;">
+      </div>
+      <div>
+        <div class="muted small">Phone</div>
+        <input id="customer_phone" class="input" placeholder="+60..." style="width:100%;">
+      </div>
+      <div>
+        <div class="muted small">Notes</div>
+        <input id="notes" class="input" placeholder="Extra notes" style="width:100%;">
+      </div>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:12px; align-items:center;">
+      <button class="btn btn-primary" id="btnCreate" type="button">Create booking</button>
+      <div class="muted small" id="createMsg"></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2 style="margin:0 0 10px;">Today</h2>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:12px;">
+      <div class="card" style="padding:14px;">
+        <div class="muted small">Arrivals (check-in)</div>
+        <div style="font-size:26px; font-weight:800;" id="kpiArrivals">0</div>
+      </div>
+      <div class="card" style="padding:14px;">
+        <div class="muted small">Turnovers (check-out)</div>
+        <div style="font-size:26px; font-weight:800;" id="kpiTurnovers">0</div>
+      </div>
+      <div class="card" style="padding:14px;">
+        <div class="muted small">Pending deposit</div>
+        <div style="font-size:26px; font-weight:800;" id="kpiPending">0</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;" id="todayList"></div>
+  </section>
+
+  <div class="footer container">Admin • © <span id="year"></span> Charming Villa Melaka</div>
+</main>
+
+<script src="../assets/js/admin-common.js"></script>
+<script src="../assets/js/admin-dashboard.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body></html>

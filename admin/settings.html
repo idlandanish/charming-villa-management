@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Settings — Admin</title>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head><body>
+<header><div class="container nav">
+  <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
+  <nav class="navlinks">
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./calendar.html">Calendar</a>
+    <a href="./bookings.html">Bookings</a>
+    <a href="./cleaning.html">Cleaning</a>
+    <a href="./settings.html">Settings</a>
+  </nav>
+  <div class="navcta"><a class="btn" id="btnLogout" href="#">Logout</a></div>
+</div></header>
+
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Settings</h1>
+    <p class="muted">Phase 1: export bookings for backup.</p>
+  </section>
+
+  <section class="section card">
+    <h2 style="margin:0 0 10px;">Export bookings (JSON)</h2>
+    <p class="muted small">Downloads all bookings from database as a JSON file.</p>
+    <button class="btn btn-primary" id="btnExport" type="button">Export</button>
+    <div class="muted small" id="msg" style="margin-top:10px;"></div>
+  </section>
+
+  <div class="footer container">Admin • © <span id="year"></span> Charming Villa Melaka</div>
+</main>
+
+<script src="../assets/js/admin-common.js"></script>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+async function exportBookings(){
+  const r = await fetch(`../api/bookings_list.php?status=ALL&unit_id=ALL&q=`, {credentials:"same-origin"}).then(x=>x.json());
+  if(!r.ok){ document.getElementById("msg").textContent = r.error || "Export failed"; return; }
+
+  const blob = new Blob([JSON.stringify(r.bookings||[], null, 2)], {type:"application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `charming-villa-bookings-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById("msg").textContent = "Exported ✅";
+}
+document.getElementById("btnExport").addEventListener("click", exportBookings);
+</script>
+</body></html>

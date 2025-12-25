@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Calendar — Admin</title>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head><body>
+<header><div class="container nav">
+  <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
+  <nav class="navlinks">
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./calendar.html">Calendar</a>
+    <a href="./bookings.html">Bookings</a>
+    <a href="./cleaning.html">Cleaning</a>
+    <a href="./settings.html">Settings</a>
+  </nav>
+  <div class="navcta"><a class="btn" id="btnLogout" href="#">Logout</a></div>
+</div></header>
+
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Calendar</h1>
+    <p class="muted">Month view for quick conflict spotting. (Phase 1 basic)</p>
+  </section>
+
+  <section class="section card">
+    <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center;">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="btn" id="prev" type="button">←</button>
+        <div style="font-weight:900; font-size:18px;" id="title">Month</div>
+        <button class="btn" id="next" type="button">→</button>
+      </div>
+      <select id="unit_id" class="input">
+        <option value="ALL">All units</option>
+      </select>
+    </div>
+    <div id="grid" style="margin-top:12px;"></div>
+    <div class="muted small" style="margin-top:10px;">Tip: click a day to see bookings.</div>
+    <div id="dayList" style="margin-top:10px;"></div>
+  </section>
+
+  <div class="footer container">Admin • © <span id="year"></span> Charming Villa Melaka</div>
+</main>
+
+<script src="../assets/js/admin-common.js"></script>
+<script src="../assets/js/admin-calendar.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body></html>

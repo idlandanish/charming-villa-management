@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Cleaning — Admin</title>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+</head><body>
+<header><div class="container nav">
+  <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
+  <nav class="navlinks">
+    <a href="./dashboard.html">Dashboard</a>
+    <a href="./calendar.html">Calendar</a>
+    <a href="./bookings.html">Bookings</a>
+    <a href="./cleaning.html">Cleaning</a>
+    <a href="./settings.html">Settings</a>
+  </nav>
+  <div class="navcta"><a class="btn" id="btnLogout" href="#">Logout</a></div>
+</div></header>
+
+<main class="container">
+  <section class="section">
+    <h1 style="margin:10px 0 6px;">Cleaning schedule</h1>
+    <p class="muted">Checkout 12PM → clean 12PM–3PM → next check-in 3PM.</p>
+  </section>
+
+  <section class="section card">
+    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+      <input id="days" class="input" type="number" min="1" value="21" style="width:120px;">
+      <div class="muted small">days ahead</div>
+      <button class="btn btn-primary" id="btnRefresh" type="button">Refresh</button>
+    </div>
+    <div id="tasks" style="margin-top:12px;"></div>
+  </section>
+
+  <div class="footer container">Admin • © <span id="year"></span> Charming Villa Melaka</div>
+</main>
+
+<script src="../assets/js/admin-common.js"></script>
+<script src="../assets/js/admin-cleaning.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body></html>
