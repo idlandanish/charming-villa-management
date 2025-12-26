@@ -98,7 +98,7 @@ async function refresh(){
 
         <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center;">
           <input class="input" data-cleaner="${t.booking_id}" placeholder="Cleaner username/name" value="${t.cleaner||""}" style="min-width:180px;">
-          <input class="input" data-phone="${t.booking_id}" placeholder="Cleaner phone (60123456789)" value="${t.phone||""}" style="min-width:220px;">
+          <input class="input" data-phone="${t.booking_id}" placeholder="Cleaner phone (60173949376)" value="${t.phone||""}" style="min-width:220px;">
 
           <select class="input" data-status="${t.booking_id}">
             ${["NOT_ASSIGNED","ASSIGNED","DONE"].map(s=>`<option value="${s}" ${t.task_status===s?"selected":""}>${s.replaceAll("_"," ")}</option>`).join("")}
@@ -158,7 +158,7 @@ async function refresh(){
       const link = waLink(phone, msg);
 
       if(!link){
-        alert("Please enter cleaner phone number first (example: 60123456789).");
+        alert("Please enter cleaner phone number first (example: 60173949376).");
         return;
       }
       window.open(link, "_blank");

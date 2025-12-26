@@ -45,7 +45,7 @@ Creates a new booking. **Includes conflict checking.**
       "check_in": "2023-12-25",
       "check_out": "2023-12-27",
       "customer_name": "John Doe",
-      "customer_phone": "60123456789",
+      "customer_phone": "60173949376",
       "channel": "Airbnb",
       "status": "CONFIRMED",
       "notes": "Late check-in"
