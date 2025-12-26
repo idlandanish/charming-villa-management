@@ -11,7 +11,7 @@
   <div class="container nav">
     <a class="brand" href="./index.html">Charming Villa Melaka</a>
     <nav class="navlinks">
-      <a href="./index.html">Home</a>
+      <a class="active" href="./index.html">Home</a>
       <a href="./properties.html">Properties</a>
       <a href="./availability.html">Check Availability</a>
       <a href="./shah-alam.html">Shah Alam</a>
@@ -67,7 +67,7 @@
     <h2>Featured Units</h2>
     <div class="grid grid-3">
       <div class="card">
-        <div class="thumb"><img src="./assets/img/placeholders/room-1.jpg" alt=""></div>
+        <div class="thumb"><img src="./assets/img/placeholders/room-1.jpg" alt="Tulips T1"></div>
         <div class="pcard-title">Tulips Denai Alam — Unit T1</div>
         <div class="pcard-meta">Apartment • Shah Alam</div>
         <div class="pcard-actions">
@@ -76,7 +76,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="./assets/img/placeholders/room-2.jpg" alt=""></div>
+        <div class="thumb"><img src="./assets/img/placeholders/room-2.jpg" alt="Habitus H1"></div>
         <div class="pcard-title">Habitus Denai Alam — Unit H1</div>
         <div class="pcard-meta">Apartment • Shah Alam</div>
         <div class="pcard-actions">
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="./assets/img/placeholders/villa-1.jpg" alt=""></div>
+        <div class="thumb"><img src="./assets/img/placeholders/villa-1.jpg" alt="Villa 909"></div>
         <div class="pcard-title">Charming Villa A’Famosa — Villa 909</div>
         <div class="pcard-meta">Villa • Melaka</div>
         <div class="pcard-actions">
@@ -94,7 +94,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="./assets/img/placeholders/villa-2.jpg" alt=""></div>
+        <div class="thumb"><img src="./assets/img/placeholders/villa-2.jpg" alt="Villa 802"></div>
         <div class="pcard-title">Charming Villa A’Famosa — Villa 802</div>
         <div class="pcard-meta">Villa • Melaka</div>
         <div class="pcard-actions">
@@ -103,7 +103,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="./assets/img/placeholders/villa-3.jpg" alt=""></div>
+        <div class="thumb"><img src="./assets/img/placeholders/villa-3.jpg" alt="Villa 143"></div>
         <div class="pcard-title">Charming Villa A’Famosa — Villa 143</div>
         <div class="pcard-meta">Villa • Melaka</div>
         <div class="pcard-actions">
@@ -112,7 +112,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="thumb"><img src="./assets/img/placeholders/room-3.jpg" alt=""></div>
+        <div class="thumb"><img src="./assets/img/placeholders/room-3.jpg" alt="Tulips T2"></div>
         <div class="pcard-title">Tulips Denai Alam — Unit T2</div>
         <div class="pcard-meta">Apartment • Shah Alam</div>
         <div class="pcard-actions">
@@ -128,7 +128,7 @@
     <ul class="list">
       <li><b>Check-in:</b> 3:00 PM • <b>Check-out:</b> 12:00 PM</li>
       <li>Bookings are confirmed via WhatsApp to avoid double bookings.</li>
-      <li>Need a specific unit? Use <a href="./properties.html">Properties</a>
+      <li>Need a specific unit? Use <a href="./properties.html">Properties</a> or
       <a href="./availability.html">Check Availability</a> to filter and choose.</li>
     </ul>
     <div class="pcard-actions">
@@ -146,18 +146,24 @@
 <div class="mobilebar">
   <div class="container wrap">
     <a class="btn btn-primary" href="./availability.html">Check Availability</a>
-      <a class="btn" href="./availability-calendar.html">View Calendar</a>
+    <a class="btn" href="./availability-calendar.html">View Calendar</a>
     <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
   </div>
 </div>
 
 <script src="./assets/js/main.js"></script>
 <script>
-  // TODO: Replace with your WhatsApp number (Malaysia format without +). Example: 60123456789
-  const WA_NUMBER = "60XXXXXXXXXX";
+  
+  const WA_NUMBER = "60173949376"; 
+  
   const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to check availability.");
   const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-  ["waTop","waHero","waMobile"].forEach(id=>document.getElementById(id).href=wa);
+  
+  ["waTop","waHero","waMobile"].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.href = wa;
+  });
+  
   if(document.getElementById("waFloat")) document.getElementById("waFloat").href = wa;
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
