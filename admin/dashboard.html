@@ -1,21 +1,27 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Admin Dashboard — Charming Villa Melaka</title>
 <link rel="stylesheet" href="../assets/css/style.css"/>
-</head><body>
-<header><div class="container nav">
-  <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
-  <nav class="navlinks">
-    <a href="./dashboard.html">Dashboard</a>
-    <a href="./calendar.html">Calendar</a>
-    <a href="./bookings.html">Bookings</a>
-    <a href="./cleaning.html">Cleaning</a>
-    <a href="./settings.html">Settings</a>
-  </nav>
-  <div class="navcta">
-    <a class="btn" id="btnLogout" href="#">Logout</a>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="./dashboard.html">Admin • Charming Villa</a>
+    <nav class="navlinks">
+      <a href="./dashboard.html">Dashboard</a>
+      <a href="./calendar.html">Calendar</a>
+      <a href="./bookings.html">Bookings</a>
+      <a href="./insight.php">Insights</a> <a href="./cleaning.html">Cleaning</a>
+      <a href="./settings.html">Settings</a>
+    </nav>
+    <div class="navcta">
+      <a class="btn" id="btnLogout" href="#">Logout</a>
+    </div>
   </div>
-</div></header>
+</header>
 
 <main class="container">
   <section class="section">
@@ -49,18 +55,20 @@
         <div class="muted small">Check-out (12PM)</div>
         <input id="check_out" class="input" type="date" style="width:100%;">
       </div>
+      
       <div>
         <div class="muted small">Channel / Agent</div>
         <select id="channel" class="input" style="width:100%;">
-  <option value="Maksu">Maksu</option>
-  <option value="Airbnb">Airbnb</option>
-  <option value="Agoda">Agoda</option>
-  <option value="Facebook">Facebook</option>
-  <option value="Walk-in">Walk-in</option>
-  <option value="Other">Other</option>
-</select>
-<input id="channel_other" class="input" placeholder="Type channel/agent..." style="width:100%; display:none; margin-top:8px;">
+          <option value="Maksu">Maksu</option>
+          <option value="Airbnb">Airbnb</option>
+          <option value="Agoda">Agoda</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Walk-in">Walk-in</option>
+          <option value="Other">Other</option>
+        </select>
+        <input id="channel_other" class="input" placeholder="Type channel name..." style="width:100%; display:none; margin-top:8px;">
       </div>
+
       <div>
         <div class="muted small">Customer name</div>
         <input id="customer_name" class="input" placeholder="Customer name" style="width:100%;">
@@ -104,5 +112,18 @@
 
 <script src="../assets/js/admin-common.js"></script>
 <script src="../assets/js/admin-dashboard.js"></script>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-</body></html>
+<script>
+  // Script to handle the "Other" channel input
+  const ch = document.getElementById("channel");
+  const other = document.getElementById("channel_other");
+  if(ch && other){
+    const toggle = ()=>{
+      other.style.display = (ch.value === "Other") ? "block" : "none";
+    };
+    ch.addEventListener("change", toggle);
+    toggle();
+  }
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
