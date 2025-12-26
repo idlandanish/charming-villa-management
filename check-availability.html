@@ -72,11 +72,14 @@
 
 <script src="./assets/js/main.js"></script>
 <script>
-  const WA_NUMBER = "60XXXXXXXXXX";
+  // FIXED: Updated to real number
+  const WA_NUMBER = "60173949376; 
+  
   const params = new URLSearchParams(location.search);
   const unitParam = params.get("unit");
   if(unitParam){
     document.getElementById("unit").value = unitParam;
+    // textContent is safe (prevents XSS)
     document.getElementById("pickedUnit").textContent = `Selected unit: ${unitParam}. Fill details and we will confirm via WhatsApp.`;
   }
 
