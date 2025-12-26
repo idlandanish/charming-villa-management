@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Booking Request — Charming Villa Melaka</title>
-<link rel="stylesheet" href="./assets/css/style.css" />
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Request Booking — Charming Villa Melaka</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body>
 <header>
@@ -13,62 +14,68 @@
       <a href="./index.html">Home</a>
       <a href="./properties.html">Properties</a>
       <a href="./availability.html">Check Availability</a>
+      <a href="./shah-alam.html">Shah Alam</a>
+      <a href="./melaka-afamosa.html">Melaka (A’Famosa)</a>
       <a href="./faq.html">FAQ & Policies</a>
       <a href="./contact.html">Contact</a>
     </nav>
     <div class="navcta">
       <a class="btn" href="./availability.html">Check Availability</a>
-      <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
     </div>
   </div>
 </header>
 
 <main class="container">
   <section class="section card">
-    <h1 style="margin:0 0 6px;">Booking Request</h1>
-    <p class="muted">Fill in your details and we’ll open WhatsApp with a complete booking message.</p>
-
-    <div class="form-grid" style="margin-top:12px;">
-      <div><label class="small-note">Unit</label><input id="unit" class="input" type="text" readonly /></div>
-      <div><label class="small-note">Dates</label><input id="dates" class="input" type="text" readonly /></div>
-      <div><label class="small-note">Your name</label><input id="name" class="input" type="text" placeholder="e.g., Sarah" /></div>
-      <div><label class="small-note">Pax</label><input id="pax" class="input" type="number" min="1" placeholder="e.g., 8" /></div>
-      <div style="grid-column:1/-1;"><label class="small-note">Notes (optional)</label><textarea id="notes" class="textarea" placeholder="e.g., late check-in, extra mattress request"></textarea></div>
+    <h1 style="margin:0 0 6px;">Request Booking</h1>
+    <p class="muted">Review your details. We will process this via WhatsApp.</p>
+    
+    <div class="card" style="background:#f9f9f9; padding:12px; margin:16px 0; border-left:4px solid #333;">
+      <div class="muted small">You are requesting:</div>
+      <div style="font-weight:700; font-size:18px; margin-top:4px;" id="summaryUnit">No unit selected</div>
+      <div style="margin-top:4px;" id="summaryDates">Please select a unit from the Check Availability page.</div>
     </div>
 
-    <div class="pcard-actions" style="margin-top:12px;">
-      <button class="btn btn-primary" id="btnSend" type="button">Send on WhatsApp</button>
-      <a class="btn" href="./availability.html">Back to availability</a>
-    </div>
+    <form id="bookForm" class="grid" style="gap:10px; max-width:720px;">
+      <input type="hidden" name="unit" id="unit">
+      <input type="hidden" name="checkIn" id="checkIn">
+      <input type="hidden" name="checkOut" id="checkOut">
 
-    <div class="muted small" style="margin-top:10px;">Check-in: <b>3:00 PM</b> • Check-out: <b>12:00 PM</b></div>
+      <label class="muted small">Your Name</label>
+      <input class="search" name="name" placeholder="Full Name" required />
+      
+      <label class="muted small">WhatsApp Number</label>
+      <input class="search" name="phone" placeholder="+60..." required />
+      
+      <div class="grid grid-2">
+        <div>
+           <label class="muted small">Guests (Adults)</label>
+           <input class="search" type="number" name="adults" value="2" min="1" required />
+        </div>
+        <div>
+           <label class="muted small">Kids</label>
+           <input class="search" type="number" name="kids" value="0" min="0" />
+        </div>
+      </div>
+      
+      <label class="muted small">Special Requests / Notes</label>
+      <input class="search" name="notes" placeholder="e.g. Late check-in, extra mattress request..." />
+
+      <div style="margin-top:10px;">
+        <button class="btn btn-primary" type="submit" style="width:100%;">Proceed to WhatsApp</button>
+      </div>
+      <p class="muted small" style="text-align:center; margin-top:8px;">
+        You will be redirected to WhatsApp to send these details to our admin.
+      </p>
+    </form>
   </section>
 
-  <div class="footer container">© <span id="year"></span> Charming Villa Melaka</div>
+  <div class="footer container">
+    © <span id="year"></span> Charming Villa Melaka
+  </div>
 </main>
 
-<div class="mobilebar">
-  <div class="container wrap">
-    <a class="btn" href="./availability.html">Availability</a>
-    <a class="btn btn-wa" id="waMobile" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
-  </div>
-</div>
-
-<div class="floating-actions">
-  <a class="fab btn-primary" href="./availability.html" style="color:#fff;">Availability</a>
-  <a class="fab btn-wa" id="waFloat" href="#" target="_blank" rel="noreferrer" style="color:#fff;">WhatsApp</a>
-</div>
-
-<script src="./assets/js/cv-storage.js"></script>
 <script src="./assets/js/book.js"></script>
-<script src="./assets/js/main.js"></script>
-<script>
-  const WA_NUMBER = "60XXXXXXXXXX";
-  const msg = encodeURIComponent("Hi Charming Villa Melaka, I want to book.");
-  const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-  document.getElementById("waTop").href = wa;
-  document.getElementById("waMobile").href = wa;
-  document.getElementById("waFloat").href = wa;
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-</body></html>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

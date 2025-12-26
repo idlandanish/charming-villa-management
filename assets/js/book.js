@@ -1,32 +1,72 @@
-function qs(id){ return document.getElementById(id); }
+// assets/js/book.js
+(() => {
+  // CONFIG: Your Real WhatsApp Number
+  const WA_NUMBER = "60173949376"; 
 
-document.addEventListener("DOMContentLoaded", ()=>{
-  const params = new URLSearchParams(location.search);
-  const unit = params.get("unit") || "";
-  const checkIn = params.get("checkIn") || "";
-  const checkOut = params.get("checkOut") || "";
+  // Security Helper
+  function esc(str) {
+    if (!str) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
-  qs("unit").value = unit;
-  qs("dates").value = (checkIn && checkOut) ? `${checkIn} to ${checkOut}` : "";
+  function qs(id){ return document.getElementById(id); }
 
-  qs("btnSend").addEventListener("click", ()=>{
-    const name = qs("name").value.trim() || "-";
-    const pax = qs("pax").value.trim() || "-";
-    const notes = qs("notes").value.trim();
+  function init(){
+    // 1. Get params from URL
+    const params = new URLSearchParams(location.search);
+    const unit = params.get("unit");
+    const cin = params.get("checkIn");
+    const cout = params.get("checkOut");
 
-    const lines = [
-      "Hi Charming Villa Melaka, I want to request a booking:",
-      `• Unit: ${unit || "-"}`,
-      `• Dates: ${checkIn || "-"} to ${checkOut || "-"}`,
-      `• Name: ${name}`,
-      `• Pax: ${pax}`,
-    ];
-    if(notes) lines.push(`• Notes: ${notes}`);
-    lines.push("", "Check-in 3:00 PM, check-out 12:00 PM.");
+    // 2. SAFETY CHECK: If no unit selected, warn the user
+    if(!unit){
+      if(qs("summaryUnit")) qs("summaryUnit").textContent = "No Unit Selected";
+      if(qs("summaryDates")) qs("summaryDates").innerHTML = `<a href="./availability.html">Click here to search for a unit</a>`;
+      return; // Stop here, don't pre-fill form
+    }
 
-    const WA_NUMBER = "60XXXXXXXXXX";
-    const msg = encodeURIComponent(lines.join("\n"));
-    const wa = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-    window.open(wa, "_blank");
-  });
-});
+    // 3. Fill the visual summary
+    if(qs("summaryUnit")) qs("summaryUnit").textContent = unit;
+    if(qs("summaryDates")) qs("summaryDates").textContent = `${esc(cin)}  ➔  ${esc(cout)}`;
+
+    // 4. Fill hidden inputs
+    if(qs("unit")) qs("unit").value = unit;
+    if(qs("checkIn")) qs("checkIn").value = cin;
+    if(qs("checkOut")) qs("checkOut").value = cout;
+
+    // 5. Handle Form Submit
+    const form = qs("bookForm");
+    if(form){
+      form.addEventListener("submit", (e)=>{
+        e.preventDefault();
+        const data = new FormData(form);
+
+        const text = 
+`*New Booking Request* 🏡
+---------------------------
+*Unit:* ${data.get("unit")}
+*Dates:* ${data.get("checkIn")} to ${data.get("checkOut")}
+
+*Guest Details:*
+👤 Name: ${data.get("name")}
+📞 Phone: ${data.get("phone")}
+👨‍👩‍👧 Pax: ${data.get("adults")} Adults, ${data.get("kids")} Kids
+
+*Notes:*
+${data.get("notes") || "None"}
+---------------------------
+_Please confirm availability._`;
+
+        const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+        window.location.href = url;
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", init);
+})();
