@@ -28,11 +28,11 @@ SELECT
   b.*,
   u.display_name AS unit_name,
   u.location,
-  ct.assigned_to,
-  ct.task_status
+  -- Get the most recent cleaning task info if multiple exist
+  (SELECT assigned_to FROM cleaning_tasks WHERE booking_id = b.id ORDER BY id DESC LIMIT 1) as assigned_to,
+  (SELECT task_status FROM cleaning_tasks WHERE booking_id = b.id ORDER BY id DESC LIMIT 1) as task_status
 FROM bookings b
 JOIN units u ON u.id = b.unit_id
-LEFT JOIN cleaning_tasks ct ON ct.booking_id = b.id
 " . (count($where) ? (" WHERE " . implode(" AND ", $where)) : "") . "
 ORDER BY b.check_in DESC
 LIMIT 500
