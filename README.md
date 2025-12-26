@@ -77,6 +77,7 @@ This system streamlines the entire homestay workflow, replacing manual spreadshe
 ├── cleaner/          # Cleaner Portal
 ├── tools/            # Utilities (Password hashing)
 └── index.html        # Public Booking Website
+```
 
 ## Owner
 Charming Villa Melaka
