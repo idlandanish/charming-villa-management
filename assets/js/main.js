@@ -12,3 +12,22 @@
     }
   });
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuBtn");
+  const navMenu = document.getElementById("navMenu");
+
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener("click", () => {
+      // Toggle the .active class on the menu
+      navMenu.classList.toggle("active");
+      
+      // Optional: Change icon from ☰ to X
+      if (navMenu.classList.contains("active")) {
+        menuBtn.textContent = "✕"; // Close icon
+      } else {
+        menuBtn.textContent = "☰"; // Hamburger icon
+      }
+    });
+  }
+});
