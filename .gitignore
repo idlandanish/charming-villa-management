@@ -19,3 +19,4 @@ build/
 .env.*
 config.local.*
 db_credentials.php
+config.php
