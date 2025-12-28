@@ -372,9 +372,4 @@ hr.sep{border:none; border-top:1px solid var(--border); margin:18px 0}
     border-bottom: 1px solid #eee;
     text-align: center;
   }
-
-  /* The class we will add with JS to show the menu */
-  .navlinks.active {
-    display: flex; /* SHOW */
-  }
-}
+  
