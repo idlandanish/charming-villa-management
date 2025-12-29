@@ -330,46 +330,61 @@ hr.sep{border:none; border-top:1px solid var(--border); margin:18px 0}
 .kpi{border:1px solid var(--border);border-radius:16px;padding:12px;background:#fff}
 .kpi .num{font-size:20px;font-weight:750}
 
-/* Default: Hide the hamburger on Desktop */
+/* --- 📱 MOBILE MENU FIX (Add to bottom of style.css) --- */
+
+/* 1. By default (Desktop), hide the hamburger button */
 .hamburger {
   display: none;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 26px;
   cursor: pointer;
+  color: var(--text);
+  padding: 0;
 }
 
-/* MOBILE STYLES (Tablets and Phones) */
-@media (max-width: 768px) {
-  /* Show the hamburger */
+/* 2. On Mobile/Tablets (Screens smaller than 900px) */
+@media (max-width: 900px) {
+  
+  /* Show the hamburger button */
   .hamburger {
     display: block;
-    margin-left: auto; /* Push to right */
   }
 
-  /* Hide the CTA buttons on mobile if they take too much space */
-  .navcta {
-    display: none; 
-  }
-
-  /* Style the menu to be hidden by default */
+  /* Hide the links by default */
   .navlinks {
-    display: none; /* HIDDEN */
-    width: 100%;
-    flex-direction: column;
-    background: white;
+    display: none;
     position: absolute;
-    top: 60px; /* Adjust based on header height */
+    top: 100%; /* Push it right below the header */
     left: 0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 10px 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    gap: 10px;
   }
 
-  /* Style the links inside the mobile menu */
+  /* This is the class your JS adds! When active, show it as flex */
+  .navlinks.active {
+    display: flex;
+  }
+
+  /* Make links look like big buttons on mobile */
   .navlinks a {
     display: block;
-    padding: 12px 20px;
-    border-bottom: 1px solid #eee;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
     text-align: center;
+    background: #f9fafb;
+    border: 1px solid transparent;
   }
-  
+
+  .navlinks a:hover, .navlinks a.active {
+    background: #fff;
+    border-color: var(--border);
+  }
+}
