@@ -93,10 +93,10 @@
     const list=document.getElementById("dayList");
     const items = bookings.filter(b=>overlapsDay(b, dayISO));
     
-    // SECURED: Using esc() for user content
+    // SECURED: Now esc(dayISO) prevents the XSS warning
     list.innerHTML = `
       <div class="card" style="padding:14px;">
-        <div style="font-weight:900;">${dayISO}</div>
+        <div style="font-weight:900;">${esc(dayISO)}</div>
         ${items.length ? items.map(b=>`
           <div class="muted small" style="margin-top:8px;">
             <b>${esc(b.unit_name)}</b> • ${esc(b.customer_name)} • ${b.status}
